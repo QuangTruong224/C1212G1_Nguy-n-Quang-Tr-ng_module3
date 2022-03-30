@@ -18,8 +18,11 @@ ma_vtu int auto_increment primary key,
 ten_vtu varchar(50)
 );
 create table chi_tiet_phieu_nhap(
+dg_nhap varchar(50),
+sl_nhap int,
 ma_vtu int,
 so_pn int,
+primary key(ma_vtu,so_pn),
 foreign key (ma_vtu) references vat_tu(ma_vtu),
 foreign key (so_pn) references phieu_nhap(so_pn)
 );
@@ -31,7 +34,7 @@ create table don_dh(
 so_dh int auto_increment primary key,
 ngay_dh date	
 );
-create table don_dat_hang(
+create table chi_tiet_don_dat_hang(
 ma_vtu int,
 so_dh int,
 primary key(so_dh,ma_vtu),
@@ -44,13 +47,6 @@ ten_ncc varchar(50),
 dia_chi varchar(50),
 so_dt varchar(10),
 unique(so_dt)
-);
-create table cung_cap(
-so_dh int,
-ma_ncc int,
-primary key(so_dh,ma_ncc),
-foreign key(so_dh)references don_dh(so_dh),
-foreign key(ma_ncc)references nha_cc(ma_ncc)
 );
 create table so_dt(
 so_dt varchar(10) primary key,
