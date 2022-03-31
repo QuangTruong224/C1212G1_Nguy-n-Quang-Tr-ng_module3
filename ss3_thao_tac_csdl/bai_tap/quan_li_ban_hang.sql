@@ -20,10 +20,8 @@ from customer join `order` on customer.id_cus = `order`.id_cus join `orderdetail
 join product on `orderdetail`.id_pro = product.id_pro;
 
 -- Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào:
-select customer.name_cus, product.name_pro, `order`.id_or,
-`orderdetail`.qty_odd from customer join `order` on customer.id_cus = `order`.id_cus join `orderdetail` on `order`.id_or = `orderdetail`.id_or 
-join product on `orderdetail`.id_pro = product.id_pro
-where `orderdetail`.qty_odd ;
+select name_cus as 'khách hàng không mua bất kỳ một sản phẩm nào' from customer
+where customer.id_cus not in (select id_cus from `order`);
 
 -- Hiển thị mã hóa đơn, ngày bán và giá tiền của từng hóa đơn
 --  (giá một hóa đơn được tính bằng tổng giá bán của từng loại mặt hàng xuất hiện trong hóa đơn.
