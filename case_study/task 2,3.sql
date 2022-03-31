@@ -24,3 +24,7 @@ where ten_loai_khach like "Diamond"
 group by hop_dong.ma_khach_hang
 order by (ma_hop_dong) asc ;
 
+-- task 8	Hiển thị thông tin ho_ten khách hàng có trong hệ thống, với yêu cầu ho_ten không trùng nhau.
+select  khach_hang.ho_ten from khach_hang
+union 
+select  khach_hang.ho_ten from khach_hang;
