@@ -59,7 +59,7 @@ select * from student  where student.student_name like 'h%';
 select * from class
 where month(start_date)=6;
 -- Hiển thị tất cả các thông tin môn học có credit trong khoảng từ 6-8.
-select * from `subject` where credit>6 and credit<8;
+select * from `subject` where credit between 6 and 8;
 
 set SQL_SAFE_UPDATES = 0;
 update student
