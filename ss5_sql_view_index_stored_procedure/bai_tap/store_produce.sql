@@ -1,3 +1,4 @@
+-- drop database  storeprocedure;
 create database  storeprocedure;
 use storeprocedure;
 
@@ -100,20 +101,21 @@ product_price = product_price,
 product_amount = product_amount,
 product_description = product_description,
 product_status = product_status
-WHERE products.id_product = id_product;
-END; //
+where products.id_product = id_product;
+end; //
 DELIMITER //
-CALL edit_product(5, 111, "Bia 333", 15000, 12,"Sài gòn", "Còn hàng");
+-- drop  procedure edit_products;
+call edit_product(5, 111, "Bia 333", 15000, 12,"Sài gòn", "Còn hàng");
 
 -- Tạo store procedure xoá sản phẩm theo id
 DELIMITER //
-Create Procedure delete_products ( id_product int)
-BEGIN
-DELETE FROM products
-WHERE id=id_product;
-END //
+create procedure delete_products ( in delete_id int)
+begin
+delete from products
+where delete_id=id_product;
+end //
 DELIMITER //
-call delete_products(1);
+call delete_products(1);	
 
 
 
