@@ -81,7 +81,7 @@ begin
 insert into new_products value 
 (id_product, product_code, product_name, product_price, product_amount, product_description, product_status);
 end;
-//DELIMITER ;
+DELIMITER ;
 
 -- Tạo store procedure sửa thông tin sản phẩm theo id:
 DELIMITER //
@@ -103,7 +103,7 @@ product_description = product_description,
 product_status = product_status
 where products.id_product = id_product;
 end; //
-DELIMITER //
+DELIMITER ;
 -- drop  procedure edit_products;
 call edit_product(5, 111, "Bia 333", 15000, 12,"Sài gòn", "Còn hàng");
 
@@ -114,7 +114,7 @@ begin
 delete from products
 where delete_id=id_product;
 end //
-DELIMITER //
+DELIMITER ;
 call delete_products(1);	
 
 
