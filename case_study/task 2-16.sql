@@ -69,8 +69,8 @@ group by ma_dich_vu order by chi_phi_thue desc;
  from dich_vu
  join loai_dich_vu on loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
  join hop_dong on hop_dong.ma_dich_vu= dich_vu.ma_dich_vu 
-where (hop_dong.ngay_lam_hop_dong between '2020-1-1 00:00:00%' and '2020-12-31 23:59:59%')
-and (hop_dong.ngay_lam_hop_dong not between '2021-1-1 00:00:00' and '2021-12-31 23:59:59')
+where (hop_dong.ngay_lam_hop_dong between '2020-1-1' and '2020-12-31')
+and (hop_dong.ngay_lam_hop_dong not between '2021-1-1 ' and '2021-12-31')
 group by dich_vu.ma_dich_vu;
 
 -- task 8	Hiển thị thông tin ho_ten khách hàng có trong hệ thống, với yêu cầu ho_ten không trùng nhau.
@@ -173,10 +173,10 @@ having
 count(hop_dong.ngay_lam_hop_dong) < 4;
 
 -- task 16 Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
--- select nhan_vien.ma_nhan_vien, nhan_vien.ho_ten
--- from nhan_vien
--- inner join hop_dong on nhan_vien.ma_hop_dong=hop_dong.ma_hop_dong
--- inner join 
+select nhan_vien.ma_nhan_vien, nhan_vien.ho_ten
+from nhan_vien
+inner join hop_dong on nhan_vien.ma_hop_dong=hop_dong.ma_hop_dong
+inner join 
 
 -- -- task 17 Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, 
 -- -- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
