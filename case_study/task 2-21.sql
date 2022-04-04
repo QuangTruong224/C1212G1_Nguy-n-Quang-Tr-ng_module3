@@ -1,5 +1,6 @@
 use quan_li_khu_nghi_duong_furama;
 
+
 -- task 2 	Hiển thị thông tin của tất cả nhân viên có trong hệ thống 
 -- có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự.
 select * from nhan_vien 
@@ -70,8 +71,12 @@ group by ma_dich_vu order by chi_phi_thue desc;
  join loai_dich_vu on loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
  join hop_dong on hop_dong.ma_dich_vu= dich_vu.ma_dich_vu 
 where (hop_dong.ngay_lam_hop_dong between '2020-1-1' and '2020-12-31')
-and (hop_dong.ngay_lam_hop_dong not between '2021-1-1 ' and '2021-12-31')
-group by dich_vu.ma_dich_vu;
+group by dich_vu.ma_dich_vu
+having dich_vu.ma_dich_vu
+not in (select dich_vu.ma_dich_vu 
+from dich_vu inner join hop_dong on dich_vu.ma_dich_vu= hop_dong.ma_dich_vu
+where (hop_dong.ngay_lam_hop_dong between '2021-1-1' and '2021-12-31'));
+
 
 -- task 8	Hiển thị thông tin ho_ten khách hàng có trong hệ thống, với yêu cầu ho_ten không trùng nhau.
 -- cách 1: 
@@ -115,16 +120,16 @@ from
  -- task11 Hiển thị thông tin các dịch vụ đi kèm đã được sử dụng bởi những khách hàng có 
 --  ten_loai_khach là “Diamond” và có dia_chi ở “Vinh” hoặc “Quảng Ngãi”.
  SELECT 
-    dvdk.ma_dich_vu_di_kem,
-    dvdk.ten_dich_vu_di_kem
+    dich_vu_di_kem.ma_dich_vu_di_kem,
+    dich_vu_di_kem.ten_dich_vu_di_kem
 FROM
-dich_vu_di_kem as dvdk join hop_dong_chi_tiet as hdct on hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
-join hop_dong as hd on hdct.ma_hop_dong = hd.ma_hop_dong
-join khach_hang as kh on kh.ma_khach_hang = hd.ma_khach_hang
-join loai_khach as lk on lk.ma_loai_khach = kh.ma_loai_khach
+dich_vu_di_kem  join hop_dong_chi_tiet  on hop_dong_chi_tiet .ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
+join hop_dong  on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+join khach_hang  on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+join loai_khach  on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
 where
-    (lk.ten_loai_khach = 'Diamond') and (kh.dia_chi like '%Vinh'
-        or kh.dia_chi like '%Quảng Ngãi');
+    (loai_khach.ten_loai_khach = 'Diamond') and (khach_hang.dia_chi like '%Vinh'
+        or '%Quảng Ngãi');
         
 -- task 12 	Hiển thị thông tin ma_hop_dong, ho_ten (nhân viên), ho_ten (khách hàng), 
 -- so_dien_thoai (khách hàng), ten_dich_vu, so_luong_dich_vu_di_kem 
@@ -173,15 +178,79 @@ having
 count(hop_dong.ngay_lam_hop_dong) < 4;
 
 -- task 16 Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
-select nhan_vien.ma_nhan_vien, nhan_vien.ho_ten
-from nhan_vien
-inner join hop_dong on nhan_vien.ma_hop_dong=hop_dong.ma_hop_dong
-inner join 
+set sql_safe_updates=0;
+ delete from nhan_vien
+ where nhan_vien.ma_nhan_vien not in (
+ select distinct hop_dong.ma_nhan_vien from hop_dong 
+ where (year(hop_dong.ngay_lam_hop_dong) between '2019' and '2021')
+ );
+ set sql_safe_updates=1;
+ select * from nhan_vien;
 
 -- -- task 17 Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, 
 -- -- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
--- select loai_khach.ma_loai_khach, loai_khach.ten_loai_khach
--- from loai_khach 
+update khach_hang 
+set ma_loai_khach=1
+where ma_loai_khach !=1
+and ma_khach_hang in
+(select tong_tien.ma_khach_hang from (select khach_hang.ma_khach_hang from khach_hang
+left join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+left join dich_vu on hop_dong.ma_dich_vu =  dich_vu.ma_dich_vu
+left join hop_dong_chi_tiet on hop_dong.ma_hop_dong = hop_dong_chi_tiet.ma_hop_dong
+left join dich_vu_di_kem on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
+group by khach_hang.ma_khach_hang
+having (sum(coalesce((dich_vu.chi_phi_thue) +
+(dich_vu_di_kem.gia)* (hop_dong_chi_tiet.so_luong)))>=10000000)) as tong_tien);
+select khach_hang.ma_khach_hang ,khach_hang.ho_ten,khach_hang.ma_loai_khach = 1 as 'loai_dich_vu'
+from khach_hang;
+select * from khach_hang;
+
+-- task 18 Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
+set sql_safe_updates=0;
+SET FOREIGN_KEY_CHECKS = 0;
+delete from khach_hang
+where khach_hang.ma_khach_hang in(
+select distinct hop_dong.ma_khach_hang from hop_dong
+where( year(hop_dong.ngay_lam_hop_dong) < '2021')
+);
+SET FOREIGN_KEY_CHECKS =  1 ;
+set sql_safe_updates=1;
+select * from khach_hang;
+
+-- task 19 Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
+create view gia_moi as
+select dich_vu_di_kem.ma_dich_vu_di_kem  from dich_vu_di_kem
+inner join hop_dong_chi_tiet on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+inner join hop_dong on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+where hop_dong_chi_tiet.so_luong >10 
+and year(hop_dong.ngay_lam_hop_dong) = 2020; 
+
+select * from gia_moi;
+set sql_safe_updates=0;
+update dich_vu_di_kem
+set dich_vu_di_kem.gia=dich_vu_di_kem.gia * 2
+where dich_vu_di_kem.ma_dich_vu_di_kem in (
+select ma_dich_vu_di_kem  from (select ma_dich_vu_di_kem from gia_moi ) as x);
+set sql_safe_updates = 1;
+
+-- Task 20 Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, thông tin hiển thị bao gồm 
+-- id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.
+select nhan_vien.ma_nhan_vien, nhan_vien.ho_ten,nhan_vien.email
+,nhan_vien.so_dien_thoai,nhan_vien.ngay_sinh,nhan_vien.dia_chi
+from nhan_vien union 
+select khach_hang.ma_khach_hang, khach_hang.ho_ten, khach_hang.email, 
+khach_hang.so_dien_thoai,khach_hang.ngay_sinh, khach_hang.dia_chi 
+from khach_hang;
+
+-- task 21 Tạo khung nhìn có tên là v_nhan_vien để lấy được thông tin của tất cả các nhân viên có địa chỉ là “Hải Châu” 
+-- và đã từng lập hợp đồng cho một hoặc nhiều khách hàng bất kì với ngày lập hợp đồng là “12/12/2019”. 
+create view v_nhan_vien as 
+select  nhan_vien.dia_chi from nhan_vien 
+inner join hop_dong on nhan_vien.ma_nhan_vien= hop_dong.ma_nhan_vien
+inner join khach_hang on hop_dong.ma_khach_hang = khac_hang.ma_khach_hang
+where  (dia_chi like  '%Hải Châu')
+
+
 
  
 
