@@ -1,0 +1,54 @@
+#center {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+
+}
+
+.picture {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+body {
+
+    background-image: url("https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-04.jpg");
+}
+
+/*#left-collumn {*!*/
+/*!*    width: 50%;*!*/
+/*!*    height: 50%;*!*/
+/*!*    margin: auto;*!*/
+/*!*}*/
+/*body {*/
+/*    background:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXhhKNOiiu5iHmF6vJ9iNRkVdl9AYc1LAWwA&usqp=CAU") no-repeat  center fixed;*/
+/*    -webkit-background-size: cover;*/
+/*    -moz-background-size: cover;*/
+/*    -o-background-size: cover;*/
+/*    background-size: cover;*/
+/*}*/
+/*h3{*/
+
+/* màu grb */
+/*    color: white;*/
+/*    text-align: center;*/
+/*    font-family: "Arial";*/
+/*    font-size: 50px;*/
+/*    background: linear-gradient(-45deg, #eeaa52, #e73c6f, #2394d5, #2af3b7);*/
+/*    -webkit-background-clip: text;*/
+/*    -webkit-text-stroke: 8px transparent;*/
+/*    animation: gradient 5s ease infinite;*/
+/*    background-size: 200% 200%;*/
+/*    text-transform: capitalize;*/
+/*}*/
+/*@keyframes gradient {*/
+/*    0%,100%{*/
+/*        background-position: 0% 50%;*/
+/*    }*/
+/*    50%{*/
+/*        background-position: 100% 50%;*/
+/*    }*/

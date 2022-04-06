@@ -264,11 +264,33 @@ from khach_hang;
 
 -- task 21 Tạo khung nhìn có tên là v_nhan_vien để lấy được thông tin của tất cả các nhân viên có địa chỉ là “Hải Châu” 
 -- và đã từng lập hợp đồng cho một hoặc nhiều khách hàng bất kì với ngày lập hợp đồng là “12/12/2019”. 
-create view v_nhan_vien as 
-select  nhan_vien.dia_chi from nhan_vien 
+create  or replace view v_nhan_vien as 
+select  nhan_vien.ma_nhan_vien,nhan_vien.ho_ten,nhan_vien.dia_chi from nhan_vien 
 inner join hop_dong on nhan_vien.ma_nhan_vien= hop_dong.ma_nhan_vien
-inner join khach_hang on hop_dong.ma_khach_hang = khac_hang.ma_khach_hang
-where  (dia_chi like  '%Hải Châu')
+where  (nhan_vien.dia_chi like  '%Yên Bái%') and hop_dong.ngay_lam_hop_dong= '2021-04-25'
+group by hop_dong.ma_nhan_vien;
+-- drop view v_nhan_vien;
+select * from v_nhan_vien;
+
+-- task 22 Thông qua khung nhìn v_nhan_vien thực hiện cập nhật 
+-- địa chỉ thành “Liên Chiểu” đối với tất cả các nhân viên được nhìn thấy bởi khung nhìn này. 
+set sql_safe_updates=0;
+update nhan_vien
+set dia_chi ='Liên Chiểu'
+where  nhan_vien.dia_chi
+ in  (select dia_chi from v_nhan_vien as x);
+set sql_safe_updates=1;
+
+-- task 23 Tạo Stored Procedure sp_xoa_khach_hang dùng để xóa thông tin của một khách hàng nào đó 
+-- với ma_khach_hang được truyền vào như là 1 tham số của sp_xoa_khach_hang.
+DELIMITER //
+create procedure find_all_khach_hang() 
+begin
+select * from khach_hang;
+end;
+DELIMITER ;
+call find_all_products(); 
+
 
 
 
