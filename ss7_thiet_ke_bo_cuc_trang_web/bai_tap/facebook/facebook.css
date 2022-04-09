@@ -10,7 +10,7 @@ nav {
 #nav-left, #nav-mid, #nav-right {
     display: flex;
     top: 5px;
-    width: 45%;
+    width: 35%;
     align-items: center;
 }
 
