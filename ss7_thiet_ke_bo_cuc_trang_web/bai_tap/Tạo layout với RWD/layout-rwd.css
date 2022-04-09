@@ -1,0 +1,145 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.header, .footer{
+    width: 100%;
+    height:10vh;
+    background: black;
+    margin: 10px 0;
+}
+.left-button a {
+    padding: 10px;
+    text-decoration: none;
+    position: relative;
+    top:25px;
+}
+.icon{
+    color: white;
+    font-size: 30px;
+}
+.login-button {
+    float: right;
+    background-color:darksalmon ;
+}
+.login-button p {
+    display: inline;
+    color: white;
+}
+.login-button a {
+    text-decoration: none;
+}
+.left-button a:hover {
+    background: lightseagreen;
+}
+.content{
+    height: 70vh;
+}
+.content-left {
+    background: #CDCDCD;
+    height: 100%;
+    width: 20%;
+    float: left;
+}
+.content-left a {
+    text-decoration: none;
+    display: block;
+    position: relative;
+    left: 30px;
+    top : 30px
+}
+.content-mid {
+    float: left;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    margin-left: 50px;
+}
+.content-right {
+    background: #CDCDCD;
+    height: 100%;
+    width: 20%;
+    float: right;
+    text-align: center;
+
+}
+.footer {
+    text-align: center;
+}
+.footer p {
+    padding: 10px;
+    color: white;
+    position: relative;
+    top : 20px
+}
+.ads {
+    height: 70px;
+    width: 100px;
+    border: 1px solid black;
+    margin-top: 10px;
+    position: relative;
+    top: 20px;
+    left: 100px;
+}
+.ads p {
+    position: relative;
+    top : 12px
+}
+.content {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+@media only screen and (min-width: 800px) {
+    /* For tablets: */
+    .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
+}
+@media only screen and (min-width: 300px)and (max-width:399px) {
+    /* For tablets: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+/*[class*="col-"] {*/
+/*    width: 100%;*/
+/*}*/
+@media only screen and (min-width: 400px)and (max-width:799px)  {
+    /* For desktop: */
+    .col-ms-1 {width: 8.33%;}
+    .col-ms-2 {width: 16.66%;}
+    .col-ms-3 {width: 25%;}
+    .col-ms-4 {width: 33.33%;}
+    .col-ms-5 {width: 41.66%;}
+    .col-ms-6 {width: 50%;}
+    .col-ms-7 {width: 58.33%;}
+    .col-ms-8 {width: 66.66%;}
+    .col-ms-9 {width: 75%;}
+    .col-ms-10 {width: 83.33%;}
+    .col-ms-11 {width: 91.66%;}
+    .col-ms-12 {width: 100%;}
+}
+
+
+
+

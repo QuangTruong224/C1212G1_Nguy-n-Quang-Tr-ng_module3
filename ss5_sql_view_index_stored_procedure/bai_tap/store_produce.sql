@@ -63,7 +63,7 @@ DELIMITER //
 create procedure find_all_products() 
 begin
 select * from products;
-end//
+end; //
 DELIMITER ;
 call find_all_products(); 
 
@@ -80,7 +80,7 @@ product_status varchar(45))
 begin
 insert into new_products value 
 (id_product, product_code, product_name, product_price, product_amount, product_description, product_status);
-end;
+end; //
 DELIMITER ;
 
 -- Tạo store procedure sửa thông tin sản phẩm theo id:
@@ -113,7 +113,7 @@ create procedure delete_products ( in delete_id int)
 begin
 delete from products
 where delete_id=id_product;
-end //
+end; //
 DELIMITER ;
 call delete_products(1);	
 

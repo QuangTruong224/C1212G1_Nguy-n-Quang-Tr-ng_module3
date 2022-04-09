@@ -1,0 +1,50 @@
+.header{
+    height: 120px;
+    background-color:#CDCDCD;
+}
+.header img {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+.link a{
+    height: 30px;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    position: relative;
+    left: 600px;
+    top : 10px
+}
+.content {
+    height:700px ;
+    width: 30%;
+}
+.content-left {
+    float: left;
+    height:100% ;
+    width: 400px;
+    position: absolute;
+    margin-top : 20px
+}
+.content-left div iframe {
+    position: relative;
+    left : 50px;
+    top:20px
+}
+.content-right  {
+    float: left;
+    height: 100%;
+    width: 1000px;
+    position: absolute;
+    right : 10px;
+    margin-top:20px
+}
+.content-right div iframe {
+    margin-top:20px;
+    position: absolute;
+    margin-left: 100px;
+}
+.description p {
+    margin-top: 500px;
+}
