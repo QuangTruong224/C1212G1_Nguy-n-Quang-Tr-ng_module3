@@ -283,14 +283,57 @@ set sql_safe_updates=1;
 
 -- task 23 Tạo Stored Procedure sp_xoa_khach_hang dùng để xóa thông tin của một khách hàng nào đó 
 -- với ma_khach_hang được truyền vào như là 1 tham số của sp_xoa_khach_hang.
-DELIMITER //
-create procedure find_all_khach_hang() 
-begin
-select * from khach_hang;
-end;
-DELIMITER ;
-call find_all_products(); 
+delimiter // 
+create procedure sp_xoa_khach_hang (in ma_khach_hang_delete  int )
+begin 
+set sql_safe_updates= 0;
+delete from khach_hang where  ma_khach_hang_delete =  ma_khach_hang;
+set sql_safe_updates= 1;
+end; //
+delimiter ;
+call sp_xoa_khach_hang(11);
 
+-- task 24 Tạo Stored Procedure sp_them_moi_hop_dong dùng để thêm mới vào bảng hop_dong với yêu cầu
+-- sp_them_moi_hop_dong phải thực hiện kiểm tra tính hợp lệ của dữ liệu bổ sung,
+--  với nguyên tắc không được trùng khóa chính và đảm bảo toàn vẹn tham chiếu đến các bảng liên quan.
+delimiter // 
+create procedure sp_them_moi_hop_dong(in them_ngay_lam_hop_dong datetime, them_ngay_ket_thuc datetime, them_tien_dat_coc double, them_ma_nhan_vien int, them_ma_khach_hang int, them_ma_dich_vu int)
+	begin 
+		if datediff(them_ngay_lam_hop-dong, them_ngay_ket_thuc) < 0 then
+		insert into hop_dong(ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu) value
+        (them_ngay_lam_hop-dong, them_ngay_ket_thuc, them_tien_dat_coc,
+        (select ma_nhan_vien 
+        from nhan_vien
+        where ma_nhan_vien = them_ma_nhan_vien),
+        (select ma_khach_hang
+        from khach_hang
+        where ma_khach_hang = them_ma_khach_hang),
+        (select ma_dich_vu
+        from dich_vu
+        where ma_dich_vu = them_ma_dich_vu));
+        end if;
+	end //
+delimiter ;
+call sp_them_moi_hop_dong();
+
+
+-- task 26	Tạo Trigger có tên tr_cap_nhat_hop_dong khi cập nhật ngày kết thúc hợp đồng,
+--  cần kiểm tra xem thời gian cập nhật có phù hợp hay không, với quy tắc sau: 
+--  Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày.
+--  Nếu dữ liệu hợp lệ thì cho phép cập nhật, nếu dữ liệu không hợp lệ thì in ra thông báo 
+--  “Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày” trên console của database.
+
+delimiter //
+drop trigger if exists tr_cap_nhat_hop_dong //
+create trigger tr_cap_nhat_hop_dong after update  on hop_dong for each row
+begin
+	if datediff(new.ngay_ket_thuc, old.ngay_lam_hop_dong) < 2 then
+    signal sqlstate '45000' set message_text = 'Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất 2 ngày';
+    end if;
+end //
+delimiter ;
+update hop_dong 
+set ngay_ket_thuc = '2019-12-11' where (ma_hop_dong = 3);
 
 
 
