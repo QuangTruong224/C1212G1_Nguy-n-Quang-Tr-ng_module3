@@ -17,8 +17,8 @@
       <legend>Calculator</legend>
       <table>
         <tr>
-          <td>First operand: </td>
-          <td><input name="first-operand" type="text"/></td>
+          <td>First number: </td>
+          <td><input name="first-number" type="text"/></td>
         </tr>
         <tr>
           <td>Operator: </td>
@@ -32,8 +32,8 @@
           </td>
         </tr>
         <tr>
-          <td>Second operand: </td>
-          <td><input name="second-operand" type="text"/></td>
+          <td>Second number: </td>
+          <td><input name="second-number" type="text"/></td>
         </tr>
         <tr>
           <td></td>

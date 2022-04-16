@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "controller.CustomerController", urlPatterns ={ "/controller.customer","/"})
+@WebServlet(name = "CustomerController", urlPatterns ={ "/customer","/"})
 public class CustomerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

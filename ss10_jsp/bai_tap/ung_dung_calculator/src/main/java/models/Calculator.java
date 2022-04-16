@@ -18,4 +18,5 @@ public class Calculator {
                 throw new RuntimeException("Invalid operation");
         }
     }
+
 }
