@@ -1,0 +1,29 @@
+body{
+    font-family: Arial, Tahoma;
+    font-size: 12px;
+}
+
+#main{
+    width: 1000px;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#head{
+    height: 100px;
+    background-color: #F5F5F5;
+    border: 1px solid #CDCDCD;
+    margin-bottom:5px;
+}
+
+#head-link{
+    margin: auto;
+}
+
+#footer{
+    height: 50px;
+    clear: both;
+    border: 1px solid #CDCDCD;
+    background-color: #F8F8FF;
+}

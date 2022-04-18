@@ -36,6 +36,9 @@ public class UserController extends HttpServlet {
                 case "search":
                     searchUser(request, response);
                     break;
+                case "sort":
+                    sortUserByName(request, response);
+                    break;
 
                 default:
                     listUser(request, response);
@@ -46,15 +49,21 @@ public class UserController extends HttpServlet {
         }
     }
 
+    private void sortUserByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<User> users = userService.sortByName();
+        request.setAttribute("listUser", users);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("list.jsp");
+        dispatcher.forward(request, response);
+    }
     private void searchUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String country = request.getParameter("search");
+        String country = request.getParameter("country");
         List<User> users = userService.searchCountry(country);
         RequestDispatcher dispatcher;
         if (users.size() == 0) {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
-            request.setAttribute("users",users);
-            dispatcher = request.getRequestDispatcher("search.jsp");
+            request.setAttribute("listUser",users);
+            dispatcher = request.getRequestDispatcher("list.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -106,8 +115,8 @@ public class UserController extends HttpServlet {
         String email = request.getParameter("email");
         String country = request.getParameter("country");
 
-        User book = new User(id, name, email, country);
-        userService.updateUser(book);
+        User user = new User(id, name, email, country);
+        userService.updateUser(user);
         RequestDispatcher dispatcher = request.getRequestDispatcher("edit.jsp");
         dispatcher.forward(request, response);
     }
