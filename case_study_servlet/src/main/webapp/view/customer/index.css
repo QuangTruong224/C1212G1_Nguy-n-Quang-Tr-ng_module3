@@ -1,0 +1,70 @@
+body{
+    font-family: Arial, Tahoma;
+    font-size: 12px;
+}
+
+#main{
+    width: 1000px;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#head{
+    height: 100px;
+    background-color: #F5F5F5;
+    border: 1px solid #CDCDCD;
+    margin-bottom:5px;
+}
+
+#head-link{
+    margin: auto;
+}
+
+#footer{
+    height: 50px;
+    clear: both;
+    border: 1px solid #CDCDCD;
+    background-color: #F8F8FF;
+}
+ div.exam1 {
+     height: 1000px;
+     width: 1000px;
+     /*background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGHD-B3CwHtJgj97Sfukciw9QuvkOa79oEGA&usqp=CAU")*/
+     /*no-repeat 50% 50%;*/
+     background-size: 200px;
+ }
+content-left {
+    background: #CDCDCD;
+    height: 100%;
+    width: 20%;
+    float: left;
+}
+.content-left a {
+    text-decoration: none;
+    display: block;
+    position: relative;
+    left: 30px;
+    top : 30px
+}
+.content {
+    display: block;
+    clear: both;
+    content: "";
+}
+@media only screen and (min-width: 300px)and (max-width:399px) {
+    /* For tablets: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+
