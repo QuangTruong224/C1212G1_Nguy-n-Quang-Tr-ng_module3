@@ -10,89 +10,89 @@
 <html>
 <head>
     <title>Customer Management Application</title>
+
 </head>
-<body>
+<body style="background-color: gray">
 <center>
     <h1>Customer Management</h1>
     <h2>
-        <a href="/customers?action=customers">List All Customers</a>
+        <a href="customers?action=customers">List All Customers</a>
     </h2>
 </center>
-<div align="center">
+<div align="center" >
     <form method="post">
         <table border="1" cellpadding="5">
             <caption>
                 <h2>
-                    Edit Customer
+                    Edit User
                 </h2>
             </caption>
             <c:if test="${customer != null}">
-                <input type="hidden" name="id" value="<c:out value='${customer.id}' />"/>
+                <input type="hidden" name="customerId" value="<c:out value='${customer.customerId}' />"/>
             </c:if>
             <tr>
-                <th>Tên khách hàng:</th>
+                <th>CustomerType:</th>
                 <td>
-                    <input type="text" name="name" size="45"
-                           value="<c:out value='${customer.name}' />"
+                    <input type="text" name="customerTypeId" size="45"
+                           value="<c:out value='${customer.customerTypeId}' />"
                     />
                 </td>
             </tr>
             <tr>
-                <th>Ngày sinh:</th>
+                <th>Name:</th>
                 <td>
-                    <input type="text" name="birthday" size="45"
-                           value="<c:out value='${customer.birthday}' />"
+                    <input type="text" name="customerName" size="45"
+                           value="<c:out value='${customer.customerName}' />"
                     />
                 </td>
             </tr>
             <tr>
-                <th>Giới tính:</th>
+                <th>BirthDay:</th>
                 <td>
-                    <input type="text" name="gender" size="15"
-                           value="<c:out value='${customer.gender}' />"
+                    <input type="date" name="customerBirthday" size="45"
+                           value="<c:out value='${customer.customerBirthday}' />"
                     />
                 </td>
             </tr>
-
             <tr>
-                <th>Chứng minh nhân dân:</th>
+                <th>Gender:</th>
                 <td>
-                    <input type="text" name="card" size="15"
-                           value="<c:out value='${customer.card}' />"
-                    />
+                    <select  id="gender" name="customerGender" required >
+                        <option  value="${customer.customerGender}">Chọn giới tính</option>
+                        <option value="1" ${customer.customerGender}  >Nam</option>
+                        <option value="0" ${customer.customerGender} >Nữ</option>
+                    </select>
                 </td>
             </tr>
-
             <tr>
-                <th>Số điện thoại:</th>
+                <th>IdCard:</th>
                 <td>
-                    <input type="text" name="phone" size="15"
-                           value="<c:out value='${customer.phone}' />"
+                    <input type="text" name="customerIdCard" size="45"
+                           value="<c:out value='${customer.customerIdCard}' />"
                     />
                 </td>
             </tr>
-
+            <tr>
+                <th>Phone:</th>
+                <td>
+                    <input type="text" name="customerPhone" size="45"
+                           value="<c:out value='${customer.customerPhone}' />"
+                    />
+                </td>
+            </tr>
             <tr>
                 <th>Email:</th>
                 <td>
-                    <input type="text" name="email" size="45"
-                           value="<c:out value='${customer.email}' />"
+                    <input type="text" name="customerEmail" size="45"
+                           value="<c:out value='${customer.customerEmail}' />"
                     />
                 </td>
             </tr>
             <tr>
-                <th>Địa chỉ:</th>
+                <th>Address:</th>
                 <td>
-                    <input type="text" name="dress" size="15"
-                           value="<c:out value='${customer.dress}' />"
-                    />
-                </td>
-            </tr>
-            <tr>
-                <th>Mã loại khách</th>
-                <td>
-                    <input type="text" name="idType" size="15"
-                           value="<c:out value='${customer.idType}' />"
+                    <input type="text" name="customerAddress" size="45"
+                           value="<c:out value='${customer.customerAddress}' />"
                     />
                 </td>
             </tr>
@@ -104,5 +104,6 @@
         </table>
     </form>
 </div>
+
 </body>
 </html>

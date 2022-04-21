@@ -5,65 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3581d8b4-f80c-4c11-af33-4ea750c0ca7f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/controller/CustomerControllerServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/model/Customer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/repository/BaseCustomerRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/repository/CustomerRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/repository/impl/CustomerRepositoryImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/service/CustomerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/service/impl/CustomerServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/build/classes/java/main/controller/CustomerControllerServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/build/classes/java/main/repository/BaseCustomerRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/build/classes/java/main/repository/CustomerRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/build/classes/java/main/repository/impl/CustomerRepositoryImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/build/classes/java/main/service/CustomerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/build/classes/java/main/service/impl/CustomerServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/java/controller/CustomerControllerServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/java/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/java/repository/BaseCustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/java/repository/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/java/repository/impl/CustomerRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/java/service/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/java/service/impl/CustomerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/webapp/view/customer/create.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/webapp/view/customer/edit.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/webapp/view/customer/error-404.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/webapp/view/customer/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/webapp/view/customer/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/webapp/view/customer/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/model/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/reponsitory/BaseReponsitory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/reponsitory/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/reponsitory/impl/UserRepositoryImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/service/impl/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/create.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/edit.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/error-404.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/list.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/controller/CustomerControllerServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/WEB-INF/classes/controller/CustomerControllerServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/view/customer/error-404.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/view/customer/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Apache Tomcat/apache-tomcat-9.0.62/webapps/ROOT/view/customer/list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../case_study_servlet/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../case_study_servlet/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../case_study_servlet/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../case_study_servlet/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../case_study_servlet/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../case_study_servlet/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../case_study_servlet/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../case_study_servlet/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case_study_servlet/build/classes/java/main/controller/CustomerControllerServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/build/classes/java/main/controller/CustomerControllerServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../case_study_servlet/build/libs/case_study-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/build/libs/case_study-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../case_study_servlet/src/main/webapp/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../case_study_servlet/src/main/webapp/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case_study_servlet/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case_study_servlet/src/main/java/controller/CustomerControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/java/controller/CustomerControllerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case_study_servlet/src/main/java/repository/impl/CustomerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/java/repository/impl/CustomerRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case_study_servlet/src/main/webapp/view/customer/error-404.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../case_study_servlet/src/main/webapp/view/customer/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../case_study_servlet/src/main/webapp/view/customer/list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/user_jdbc-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/user_jdbc-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ss13/bai_tap/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss13/bai_tap/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,6 +186,7 @@
       <workItem from="1650378928106" duration="922000" />
       <workItem from="1650419389366" duration="5716000" />
       <workItem from="1650439112824" duration="6289000" />
+      <workItem from="1650468374372" duration="689000" />
     </task>
     <servers />
   </component>

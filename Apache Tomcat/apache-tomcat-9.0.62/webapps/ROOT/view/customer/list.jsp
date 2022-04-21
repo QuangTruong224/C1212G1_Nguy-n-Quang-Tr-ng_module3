@@ -11,93 +11,123 @@
 <head>
   <title>Customers Management Application</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-</head>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap413/css/bootstrap.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/datatables/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css"></head>
 <body>
+<center>
+  <h1>Customer Management</h1>
+  <h2>
+    <a href="/customers?action=create">Add New Customer</a>
+  </h2>
+</center>
 
-<h1 style="text-align: center">Customers Management</h1>
-<h2 style="text-align: center">
-  <a href="/customers?action=create">Add New Customers</a>
-</h2>
-<form action="/customers" style="text-align: center">
-  <input type="hidden" name="action" value="search">
-  <input type="text" name="name">
-  <input type="submit" value="Seach by name">
-</form>
+<div align="center" class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <table id="tableStudent" class="table table-striped m-4" style="width:100%">
+        <caption><h2>List of Customer</h2></caption>
+        <thead>
+        <tr>
+          <th>STT</th>
+          <th>Loại khách hàng</th>
+          <th>Tên khách hang</th>
+          <th>Ngày sinh</th>
+          <th>Giới tính</th>
+          <th>Căn cước công dân</th>
+          <th>Số điện thoại</th>
+          <th>Email</th>
+          <th>Địa chỉ</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="customer" items="${customerList}">
+          <tr>
+            <td><c:out value="${customer.customerId}"/></td>
+            <td><c:out value="${customer.customerTypeId}"/></td>
+            <td><c:out value="${customer.customerName}"/></td>
+            <td><c:out value="${customer.customerBirthday}"/></td>
+            <td><c:out value="${customer.customerGender}"/></td>
+            <td><c:out value="${customer.customerIdCard}"/></td>
+            <td><c:out value="${customer.customerPhone}"/></td>
+            <td><c:out value="${customer.customerEmail}"/></td>
+            <td><c:out value="${customer.customerAddress}"/></td>
+            <td>
+              <a href="/customers?action=update&customerId=${customer.customerId}">
+                <button class="btn-primary">Edit</button>
+              </a>
+                <%--                            <a href="/customers?action=delete&customerId=${customer.customerId}">--%>
+              <button onclick="deleteCustomer(${customer.customerId},'${customer.customerName}')"
+                      type="button" class="btn btn-danger" data-toggle="modal"
+                      data-target="#deleteModal">Delete
+              </button>
+            </td>
+          </tr>
+        </c:forEach>
+        </tbody>
 
-<div align="center">
-  <table  class="table" border="1" style="width: 100%;margin: auto">
-    <caption><h2>List of Customers</h2></caption>
-    <head>
-      <tr>
-        <th>Id</th>
-        <th>Tên khách hàng</th>
-        <th>Ngày Sinh</th>
-        <th>Giới tính</th>
-        <th>Chứng minh nhân dân</th>
-        <th>Số điện thoại</th>
-        <th>Email</th>
-        <th>Dịa chỉ</th>
-        <th>Mã loại khách</th>
-      </tr>
-    </head>
-    <body>
-    <c:forEach var="customer" items="${listCustomer}">
-      <tr>
-        <td><c:out value="${customer.id}"/></td>
-        <td><c:out value="${customer.name}"/></td>
-        <td><c:out value="${customer.birthday}"/></td>
-        <td><c:out value="${customer.gender}"/></td>
-        <td><c:out value="${customer.card}"/></td>
-        <td><c:out value="${customer.phone}"/></td>
-        <td><c:out value="${customer.email}"/></td>
-        <td><c:out value="${customer.dress}"/></td>
-        <td><c:out value="${customer.idType}"/></td>
-        <td>
-          <a href="/customers?action=edit&id=${customer.id}">Edit</a>
-          <button onclick="deleteCustomerModal(${customer.id},'${customer.name}')" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-            Delete
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<form action="/customers?action=delete" method="post">
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
           </button>
-        </td>
-      </tr>
-    </c:forEach>
-    </body>
-  </table>
-  <form action="/customers">
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Delete customer?</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <input type="hidden" name="id" id="idCustomerDelete">
-            <input type="hidden" name="action" value="delete">
-            Do you want to delete this customer? <br>
-            Customer id: <p id="idCustomer"></p>
-            Customer name: <p id="nameCustomer"></p>
-            <p>Can not undo</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Delete</button>
-          </div>
+        </div>
+        <div class="modal-body">
+          Are you sure delete <span class="text-danger" id="name-customer"></span> ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button onclick="submitFormDelete()" type="button" class="btn btn-danger">Delete</button>
         </div>
       </div>
     </div>
-  </form>
-</div>
-</body>
-<script>
-  function deleteCustomerModal(id, name) {
-    document.getElementById("idCustomer").innerText = id;
-    document.getElementById("idCustomerDelete").value = id;
-    document.getElementById("nameCustomer").innerText = name;
-  }
+  </div>
+</form>
+
+
+
+<form hidden id="form-delete" action="/customers?action=delete">
+  <input type="text" name="action" value="delete">
+  <input type="text" name="customerId" id="id-customer">
+</form>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap413/js/bootstrap.bundle.min.js">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap413/js/bootstrap.js">
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap4.min.js"></script>
 </script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-
+<script>
+  $(document).ready(function () {
+    $('#tableStudent').dataTable({
+      "dom": 'lrtip',
+      "lengthChange": false,
+      "pageLength": 5
+    });
+  });
+  function deleteCustomer(id, name) {
+    document.getElementById("id-customer").value = id;
+    document.getElementById("name-customer").innerText = name;
+  }
+  function submitFormDelete() {
+    document.getElementById("form-delete").submit();
+  }
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.min.js"></script>
+</body>
 </html>
