@@ -42,10 +42,10 @@
             <tr>
                 <th>Gender:</th>
                 <td>
-                    <select  id="gender" name="customerGender" required >
-                        <option  value="${customer.customerGender}">Chọn giới tính</option>
-                        <option value="1" ${customer.customerGender}  >Nam</option>
-                        <option value="0" ${customer.customerGender} >Nữ</option>
+                    <select   name="customerGender"  >
+                        <option  value="">Chọn giới tính</option>
+                        <option value="1" >Nam</option>
+                        <option value="0"  >Nữ</option>
                     </select>
                 </td>
             </tr>

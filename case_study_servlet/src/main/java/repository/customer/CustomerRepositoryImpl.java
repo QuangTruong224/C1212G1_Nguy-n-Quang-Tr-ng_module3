@@ -25,7 +25,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public void insertCustomer(Customer customer) throws SQLException {
         System.out.println(INSERT_CUSTOMER_SQL);
-        try (PreparedStatement preparedStatement = this.baseCustomerRepository.getConnectionJavaToDB().prepareStatement(INSERT_CUSTOMER_SQL);) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = this.baseCustomerRepository.getConnectionJavaToDB().prepareStatement(INSERT_CUSTOMER_SQL);
+
             preparedStatement.setString(1, customer.getCustomerName());
             preparedStatement.setString(2, customer.getCustomerBirthday());
             preparedStatement.setInt(3, customer.getCustomerGender());
@@ -38,14 +41,21 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @Override
     public Customer selectCustomer(int id) {
         Customer customer = null;
-
-        try (PreparedStatement preparedStatement = this.baseCustomerRepository.getConnectionJavaToDB().prepareStatement(SELECT_CUSTOMER_BY_ID);) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = this.baseCustomerRepository.getConnectionJavaToDB().prepareStatement(SELECT_CUSTOMER_BY_ID);
             preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
@@ -63,8 +73,15 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 customer = new Customer(id, customerTypeId, customerName, customerBirthDay, customerGender,
                         customerIdCard, customerPhone, customerEmail, customerAddress);
             }
+
         } catch (SQLException e) {
             printSQLException(e);
+        }finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return customer;
     }
@@ -72,8 +89,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public List<Customer> selectAllCustomer() {
         List<Customer> customers = new ArrayList<>();
-        try (PreparedStatement preparedStatement = this.baseCustomerRepository.getConnectionJavaToDB().prepareStatement(SELECT_ALL_CUSTOMER)) {
-            System.out.println(preparedStatement);
+        PreparedStatement preparedStatement = null;
+        try {
+                preparedStatement = this.baseCustomerRepository.getConnectionJavaToDB().prepareStatement(SELECT_ALL_CUSTOMER);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -92,6 +110,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             }
         } catch (SQLException e) {
             printSQLException(e);
+        }finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return customers;
     }
@@ -99,9 +123,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public void update(Customer customer) {
         System.out.println(UPDATE_CUSTOMER);
+        PreparedStatement preparedStatement = null;
 
-        try (PreparedStatement preparedStatement = this.baseCustomerRepository.getConnectionJavaToDB().prepareStatement(UPDATE_CUSTOMER)) {
 
+        try {
+            preparedStatement = this.baseCustomerRepository.getConnectionJavaToDB().prepareStatement(UPDATE_CUSTOMER);
 
             preparedStatement.setString(1, customer.getCustomerName());
             preparedStatement.setString(2, customer.getCustomerBirthday());
@@ -116,18 +142,32 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
+        }finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @Override
     public void delete(int id) {
+        PreparedStatement preparedStatement=null;
         System.out.println(DELETE_CUSTOMER_SQL);
-        try (PreparedStatement preparedStatement = this.baseCustomerRepository.getConnectionJavaToDB().prepareStatement(DELETE_CUSTOMER_SQL)){
+        try {
+            preparedStatement = this.baseCustomerRepository.getConnectionJavaToDB().prepareStatement(DELETE_CUSTOMER_SQL);
             preparedStatement.setInt(1,id);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
+        }finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

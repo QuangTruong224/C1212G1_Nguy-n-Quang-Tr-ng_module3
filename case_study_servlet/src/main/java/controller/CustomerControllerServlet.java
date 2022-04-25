@@ -89,14 +89,19 @@ public class CustomerControllerServlet extends HttpServlet {
 
     private void listCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Customer> customerList = customerService.selectAllCustomer();
+        List<CustomerType> customerTypeList = customerTypeService.selectAll();
         request.setAttribute("customerList", customerList);
+        request.setAttribute("customerTypeList", customerTypeList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/list.jsp");
         dispatcher.forward(request, response);
     }
 
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       List<Customer> customerList=customerService.selectAllCustomer();
         List<CustomerType> customerTypeList = customerTypeService.selectAll();
+        request.setAttribute("customerList",customerList);
         request.setAttribute("customerTypeList", customerTypeList);
+        System.out.println(customerList.size());
         System.out.println(customerTypeList.size());
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/create.jsp");
         dispatcher.forward(request, response);

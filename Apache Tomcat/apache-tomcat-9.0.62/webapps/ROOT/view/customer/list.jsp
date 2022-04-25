@@ -11,15 +11,22 @@
 <head>
   <title>Customers Management Application</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap413/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bootstrap413/css/bootstrap.min.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/datatables/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css"></head>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+</head>
 <body>
 <center>
+  <div style="text-align: left;margin: auto">
+    <h2 >
+      <a href="view/customer/index.jsp">Home</a>
+    </h2>
+  </div>
   <h1>Customer Management</h1>
-  <h2>
+  <h3>
     <a href="/customers?action=create">Add New Customer</a>
-  </h2>
+  </h3>
+
 </center>
 
 <div align="center" class="container">
@@ -45,10 +52,31 @@
         <c:forEach var="customer" items="${customerList}">
           <tr>
             <td><c:out value="${customer.customerId}"/></td>
-            <td><c:out value="${customer.customerTypeId}"/></td>
+<%--            <td><c:out value="${customer.customerTypeId}"/></td>--%>
+
+            <td>
+              <c:forEach var="customerType" items="${customerTypeList}">
+                <c:if test="${customer.customerTypeId == customerType.customerTypeId}">
+                  ${customerType.customerTypeName}
+                </c:if>
+              </c:forEach>
+            </td>
+
             <td><c:out value="${customer.customerName}"/></td>
             <td><c:out value="${customer.customerBirthday}"/></td>
-            <td><c:out value="${customer.customerGender}"/></td>
+<%--            <td><c:out value="${customer.customerGender}"/></td>--%>
+            <td>
+              <c:choose>
+                <c:when test="${customer.customerGender=='1'}">
+                  Nam
+                  <br/>
+                </c:when>
+                <c:otherwise>
+                  Nữ
+                  <br/>
+                </c:otherwise>
+              </c:choose>
+            </td>
             <td><c:out value="${customer.customerIdCard}"/></td>
             <td><c:out value="${customer.customerPhone}"/></td>
             <td><c:out value="${customer.customerEmail}"/></td>
@@ -57,7 +85,6 @@
               <a href="/customers?action=update&customerId=${customer.customerId}">
                 <button class="btn-primary">Edit</button>
               </a>
-                <%--                            <a href="/customers?action=delete&customerId=${customer.customerId}">--%>
               <button onclick="deleteCustomer(${customer.customerId},'${customer.customerName}')"
                       type="button" class="btn btn-danger" data-toggle="modal"
                       data-target="#deleteModal">Delete
@@ -102,8 +129,6 @@
   <input type="text" name="customerId" id="id-customer">
 </form>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap413/js/bootstrap.bundle.min.js">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap413/js/bootstrap.js">
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="datatables/js/jquery.dataTables.min.js"></script>
 <script src="datatables/js/dataTables.bootstrap4.min.js"></script>

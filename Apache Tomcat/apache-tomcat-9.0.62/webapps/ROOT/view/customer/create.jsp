@@ -17,7 +17,7 @@
 
 <form method="post" action="/customers?action=create" >
     <fieldset style="text-align: center ;background-color: gray ">
-        <legend><h4>Add New Customer</h4></legend>
+        <legend><h3>Add New Customer</h3></legend>
         <table   >
 
             <tr>
@@ -42,10 +42,10 @@
             <tr>
                 <th>Gender:</th>
                 <td>
-                    <select  id="gender" name="customerGender" required >
-                        <option  value="${customer.customerGender}">Chọn giới tính</option>
-                        <option value="1" ${customer.customerGender}  >Nam</option>
-                        <option value="0" ${customer.customerGender} >Nữ</option>
+                    <select   name="customerGender"  >
+                        <option  value="">Chọn giới tính</option>
+                        <option value="1" >Nam</option>
+                        <option value="0"  >Nữ</option>
                     </select>
                 </td>
             </tr>
@@ -69,8 +69,6 @@
     </fieldset>
     <input type="submit" value="Save"/>
 </form>
-<script src="${pageContext.request.contextPath}/assert/jquery/jquery-3.5.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/assert/bootstrap413/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assert/bootstrap413/js/bootstrap.bundle.js"></script>
+
 </body>
 </html>

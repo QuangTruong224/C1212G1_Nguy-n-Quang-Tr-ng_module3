@@ -30,13 +30,16 @@
             <c:if test="${customer != null}">
                 <input type="hidden" name="customerId" value="<c:out value='${customer.customerId}' />"/>
             </c:if>
+
             <tr>
-                <th>CustomerType:</th>
-                <td>
-                    <input type="text" name="customerTypeId" size="45"
-                           value="<c:out value='${customer.customerTypeId}' />"
-                    />
-                </td>
+                <th>Customer type :</th>
+            <td>
+                <select name="customerTypeId">
+                    <c:forEach var="customerTypeId" items="${customerTypeList}">
+                        <option value="${customerTypeId.customerTypeId}">${customerTypeId.customerTypeName}</option>
+                    </c:forEach>
+                </select>
+            </td>
             </tr>
             <tr>
                 <th>Name:</th>
